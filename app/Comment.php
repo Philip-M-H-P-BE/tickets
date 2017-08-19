@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    public function ticket() {
+    protected $primaryKey = 'commentID';
+	protected $fillable = ['ticket_id', 'comment'];
+	protected $guarded = ['commentID', 'created_at', 'updated_at'];
+	
+	public function ticket() {
 		return $this->belongsTo(Ticket::class);
 	}
 }

@@ -8,6 +8,7 @@ class Ticket extends Model
 {
     protected $fillable = ['user_id', 'category_id', 'title', 'message'];
 	protected $primaryKey = 'ticketID';
+	protected $guarded = ['ticketID', 'created_at', 'updated_at'];
 	
 	public function comments(){
 		return $this->hasMany(Comment::class);
