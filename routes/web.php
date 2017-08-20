@@ -10,17 +10,23 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
+/*	vervangen door homepage met globaal overzicht van alle support tickets!!!
 Route::get('/', function () {
     return view('welcome');
 });
 */
 
+/* door Laravel gegenereerd, afblijven!!! */
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+/* afblijven!!! */
 
+
+/* zelf gedefinieerde routes */
 Route::get('/', 'GuestsController@index')->name('publiclyaccessibletickets.list');
-Route::get('/categories/{id}', 'GuestsController@show')->name('categories.show');
+Route::get('/categories/{id}/tickets', 'TicketsController@expandCategoryLink')->name('tickets_per_category');
+
+
 
 
 Route::group(['middleware' => 'auth'], function() {

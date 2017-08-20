@@ -15,12 +15,5 @@ class GuestsController extends Controller
 		return view('openbaar')
 			->with('categories', $categories)
 			->with('tickets', $tickets);
-	}
-	
-	public function toonCategorie($id) {
-		$categories = Categorie::all();
-		$tickets = Ticket::where('category_id', $id);
-		return view('openbaar')
-			->with('categories', $categories)
-	}
+	}	
 }
