@@ -13,7 +13,7 @@ class User extends Authenticatable
 		return $this->hasMany(Ticket::class);
 	}
 	public function comments() {
-		return $this->hasManyThrough(Comment::class, Ticket::class);
+		return $this->hasManyThrough(Comment::class, Ticket::class, 'user_id', 'ticket_id', 'commentID');
 	}
     /**
      * The attributes that are mass assignable.

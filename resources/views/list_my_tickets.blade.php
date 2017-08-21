@@ -16,6 +16,7 @@
 		        				<tr>
 		        					<th>Category</th>
 		        					<th>Title</th>
+									<th>Auteur</th>
 		        					<th>Last Updated</th>
 		        				</tr>
 		        			</thead>
@@ -25,15 +26,18 @@
 		        					<td>
 		        					@foreach ($categories as $category)
 		        						@if ($category->categoryID === $ticket->category_id)
-											{{ $category->catogoryName }}
+											{{ $category->categoryName }}
 		        						@endif
 		        					@endforeach
 		        					</td>
 		        					<td>
-		        						<a href="{{-- --}}">
+		        						<a href="{{ route('tickets.show', ['id' => $ticket->ticketID]) }}">
 		        							{{ $ticket->title }}
 		        						</a>
 		        					</td>
+									<td>
+										{{ $ticket->user->name }}
+									</td>
 		        					<td>
 										{{ $ticket->updated_at }}
 									</td>
