@@ -11,6 +11,6 @@ class Categorie extends Model
 	protected $guarded = ['categoryID', 'created_at', 'updated_at'];
 	
 	public function tickets() {
-		return $this->hasMany(Ticket::class);
+		return $this->hasMany(Ticket::class, 'category_id', 'categoryID');
 	}
 }

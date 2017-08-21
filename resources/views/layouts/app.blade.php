@@ -39,9 +39,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
 						<li><a href="{{ route('publiclyaccessibletickets.list') }}">Home</a></li>
-						<li><a href="#">Nieuw ticket</a></li>
+						<li><a href="{{ route('tickets.create') }}">Nieuw ticket</a></li>
 						{{-- @if (Auth::user()) --}}
-						<li><a href="#">Mijn tickets</a></li>
+						<li><a href="{{ route('mytickets.show') }}">Mijn tickets</a></li>
 						{{-- @endif --}}
                     </ul>
 

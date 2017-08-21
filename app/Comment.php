@@ -11,6 +11,6 @@ class Comment extends Model
 	protected $guarded = ['commentID', 'created_at', 'updated_at'];
 	
 	public function ticket() {
-		return $this->belongsTo(Ticket::class);
+		return $this->belongsTo(Ticket::class, ticketID);
 	}
 }

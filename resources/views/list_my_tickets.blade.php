@@ -1,28 +1,22 @@
 @extends('layouts.app')
-@section('content');
-<div class="container">
+@section('content')
 	<div class="row">
-		<div class="col-md-3">
-			@include('partials.aside');
-		</div>
-		<div class="col-md-9">
-			<h1 class="text-center">Support tickets ({{ count($tickets) }})</h1>			
+		<div class="col-md-10 col-md-offset-1">
 	        <div class="panel panel-default">
 	        	<div class="panel-heading">
-	        		<i class="fa fa-ticket">Tickets uit alle categorieën</i>
+	        		<i class="fa fa-ticket">Mijn Tickets</i>
 	        	</div>
+
 	        	<div class="panel-body">
 	        		@if ($tickets->isEmpty())
-						<p>Er zijn momenteel geen tickets</p>
+						<p>U heeft nog geen eigen tickets op deze website.</p>
 	        		@else
 		        		<table class="table">
 		        			<thead>
 		        				<tr>
-		        					<th>Categorie</th>
-		        					<th>Titel</th>
-		        					<th>Laatst gewijzigd</th>
-									<th>Auteur</th>
-									<th>Comments</th>
+		        					<th>Category</th>
+		        					<th>Title</th>
+		        					<th>Last Updated</th>
 		        				</tr>
 		        			</thead>
 		        			<tbody>
@@ -31,32 +25,25 @@
 		        					<td>
 		        					@foreach ($categories as $category)
 		        						@if ($category->categoryID === $ticket->category_id)
-											{{ $category->categoryName }}
+											{{ $category->catogoryName }}
 		        						@endif
 		        					@endforeach
 		        					</td>
 		        					<td>
-		        						<a href="#">
+		        						<a href="{{-- --}}">
 		        							{{ $ticket->title }}
 		        						</a>
 		        					</td>
 		        					<td>
-										{{ $ticket->updated_at }}</td>
-		        					</td>
-									<td>
-										{{ $ticket->user->name }}
-									</td>
-									<td>
-										{{ count($ticket->comments) }}
+										{{ $ticket->updated_at }}
 									</td>
 		        				</tr>
 		        			@endforeach
 		        			</tbody>
-		        		</table>		        		
-		        	@endif
+		        		</table>
+	        		@endif
 	        	</div>
-			</div>
-		</div>
+	        </div>
+	    </div>
 	</div>
-</div>
 @endsection

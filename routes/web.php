@@ -28,8 +28,10 @@ Route::get('/categories/{id}/tickets', 'TicketsController@expandCategoryLink')->
 
 
 
-
+/* alleen voor ingelogden!!! */
 Route::group(['middleware' => 'auth'], function() {
-	Route::get('/mijntickets', 'TicketsController@index')->name('mytickets.show');
+	Route::get('/mijntickets', 'TicketsController@showMyTickets')->name('mytickets.show');
+	Route::get('/tickets/{id}', 'TicketsController@show')->name('tickets.show');
 	Route::get('/ticketformulier', 'TicketsController@create')->name('tickets.create');
+	Route::post('/registreerticket', 'TicketsController@store')->name('tickets.store');
 });

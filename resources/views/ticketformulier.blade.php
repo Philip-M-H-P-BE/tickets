@@ -5,11 +5,11 @@
 	        <div class="panel panel-default">
 	            <div class="panel-heading">Creëer een nieuw ticket</div>
 	            <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{-- --}}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('tickets.store') }}">
                         {!! csrf_field() !!}
 
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                            <label for="title" class="col-md-4 control-label">Title</label>
+                            <label for="title" class="col-md-4 control-label">Titel</label>
 
                             <div class="col-md-6">
                                 <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}">
@@ -23,13 +23,13 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('category') ? ' has-error' : '' }}">
-                            <label for="category" class="col-md-4 control-label">Category</label>
+                            <label for="category" class="col-md-4 control-label">Categorie</label>
 
                             <div class="col-md-6">
                                 <select id="category" type="category" class="form-control" name="category">
-                                	<option value="">Select Category</option>
-                                	@foreach ($categories as $category)
-										<option value="{{ $category->categoryID }}">{{ $category->categoryName }}</option>
+                                	<option value="">Selecteer categorie</option>
+                                	@foreach ($categories as $categorie)
+										<option value="{{ $categorie->categoryID }}">{{ $categorie->categoryName }}</option>
                                 	@endforeach
                                 </select>
 
@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
-                            <label for="message" class="col-md-4 control-label">Message</label>
+                            <label for="message" class="col-md-4 control-label">Tekst</label>
 
                             <div class="col-md-6">
                                 <textarea rows="10" id="message" class="form-control" name="message"></textarea>
