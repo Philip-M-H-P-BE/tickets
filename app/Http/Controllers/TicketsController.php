@@ -28,6 +28,7 @@ class TicketsController extends Controller
 	public function showMyTickets() {
 		$tickets = Ticket::where('user_id', Auth::user()->id)
 			->with('categorie')
+			->with('comments')
 			->orderBy('updated_at', 'desc')
 			->get();
 		$categories = Categorie::all();

@@ -18,6 +18,7 @@
 		        					<th>Title</th>
 									<th>Auteur</th>
 		        					<th>Last Updated</th>
+									<th>Comments</th>
 		        				</tr>
 		        			</thead>
 		        			<tbody>
@@ -40,6 +41,9 @@
 									</td>
 		        					<td>
 										{{ $ticket->updated_at }}
+									</td>
+									<td>
+										{{ count($ticket->comments) }}
 									</td>
 		        				</tr>
 		        			@endforeach
