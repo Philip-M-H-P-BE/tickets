@@ -27,7 +27,11 @@
 		        			<tbody>
 		        			@foreach ($tickets as $ticket)
 								<tr>
-									<td>{{ $ticket->title }}</td>		        					
+									<td>
+										<a href="{{ route('tickets.show', [$ticket->ticketID]) }}">
+											{{ $ticket->title }}
+										</a>
+									</td>		        					
 									<td>{{ $ticket->user->name }}</td>
 									<td>{{ $ticket->updated_at }}</td>
 									<td>{{ count($ticket->comments) }}</td>

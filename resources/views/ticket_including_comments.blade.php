@@ -10,29 +10,37 @@
 	        		<div class="ticket-info">
 	        			<p>{{ $ticket->message }}</p>
 						<div class="row clearfix">
-							<div class="col-md-4 col-md-offset-1">
+							<div class="col-md-4 col-md-offset-1 float-left">
 								<p>Categorie:</p>
 							</div>
-							<div class="col-md-4 col-md-offset-1 pull-right">
+							<div class="col-md-5 col-md-offset-6 float-right">
 								<p>{{ $category->categoryName }}</p>
 							</div>
 						</div>
 						<div class="row clearfix">
-							<div class="col-md-4 col-md-offset-1">
+							<div class="col-md-4 col-md-offset-1 float-left">
 								<p>Aangemaakt:</p>
 							</div>
-							<div class="col-md-4 col-md-offset-1 pull-right">
+							<div class="col-md-5 col-md-offset-6 float-right">
 								<p>{{ $ticket->created_at }}</p>
 							</div>
 						</div>
 						<div class="row clearfix">
-							<div class="col-md-4 col-md-offset-1">
+							<div class="col-md-4 col-md-offset-1 float-left">
 								<p>Laatst gewijzigd:</p>
 							</div>
-							<div class="col-md-4 col-md-offset-1 pull-right">
+							<div class="col-md-5 col-md-offset-6 float-right">
 								<p>{{ $ticket->updated_at }}</p>
 							</div>
 						</div>
+						<div class="row clearfix">
+							<div class="col-md-4 col-md-offset-1 float-left">
+								<p>Auteur:</p>
+							</div>
+							<div class="col-md-5 col-md-offset-6 float-right">
+								<p>{{ $ticket->user->name }}</p>
+							</div>
+						</div>						
 	        		</div>
 					<hr>
 					<div>
@@ -48,9 +56,9 @@
 									</form>
 								</div>                                                                               
 								<div class="col-md-4 col-md-offset-2 pull-right">
-									<form action="{{-- --}}" method="POST">
+									<form action="{{ route('tickets.destroy', ['id' => $ticket->ticketID]) }}" method="POST">
 										{{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
+                                        <input type="hidden" name="_method" value="DELETE">
 										<button type="submit" class="btn btn-danger" id="deleteButton">
 											<i class="fa fa-trash-o" aria-hidden="true"></i>Verwijderen
 										</button>
@@ -76,9 +84,8 @@
 	        		</div>
 
 	        		<div class="comment-form">
-		        		<form action="{{ url('comment') }}" method="POST" class="form">
-		        			{!! csrf_field() !!}
-
+		        		<form action="{{ route('comments.post') }}" method="POST" class="form">
+		        			{{ csrf_field() }}
 		        			<input type="hidden" name="ticket_id" value="{{ $ticket->ticketID }}">
 
 		        			<div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
@@ -92,10 +99,10 @@
 	                        </div>
 
 	                        <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Post commentaar</button>
 	                        </div>
 		        		</form>
-	        	</div>
+					</div>
 	        </div>
 	    </div>
 	</div>

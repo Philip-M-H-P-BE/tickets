@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 /* zelf gedefinieerde routes */
+/* ook voor wie niet ingelogd is */
 Route::get('/', 'GuestsController@index')->name('publiclyaccessibletickets.list');
 Route::get('/categories/{id}/tickets', 'TicketsController@expandCategoryLink')->name('tickets_per_category');
 
@@ -36,4 +37,6 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::post('/registreerticket', 'TicketsController@store')->name('tickets.store');
 	Route::get('/tickets/{id}/edit', 'TicketsController@edit')->name('tickets.edit');
 	Route::put('/tickets/{id}', 'TicketsController@update')->name('tickets.update');
+	Route::delete('/tickets/{id}/delete', 'TicketsController@destroy')->name('tickets.destroy');
+	Route::post('/comment', 'CommentsController@postComment')->name('comments.post');
 });

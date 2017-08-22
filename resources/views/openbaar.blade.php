@@ -36,7 +36,7 @@
 		        					@endforeach
 		        					</td>
 		        					<td>
-		        						<a href="#">
+		        						<a href="{{ route('tickets.show', [$ticket->ticketID]) }}">
 		        							{{ $ticket->title }}
 		        						</a>
 		        					</td>

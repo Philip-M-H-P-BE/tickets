@@ -94,4 +94,10 @@ class TicketsController extends Controller
 		
 		return redirect()->route('tickets.show', ['id' => $id]);
 	}
+	/* ticket deleten */
+	public function destroy($id) {
+		$ticket = Ticket::where('ticketID', $id)->first();
+		$ticket->delete();
+		return redirect()->route('mytickets.show');
+	}
 }

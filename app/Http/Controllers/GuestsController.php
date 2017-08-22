@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Categorie;
 use App\Ticket;
 use App\Comment;
+use Illuminate\Support\Facades\Auth;
 
 class GuestsController extends Controller
 {
